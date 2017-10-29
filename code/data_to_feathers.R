@@ -1,5 +1,4 @@
-library(tidyverse)
-library(feather)
+source('code/dependencies.R')
 
 sample_submission <- read_csv('/Volumes/Seagate Backup Plus Drive/source/sample_submission_zero.csv')
 
