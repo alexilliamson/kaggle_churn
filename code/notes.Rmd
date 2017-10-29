@@ -1,0 +1,30 @@
+---
+title: "Notes"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source('code/dependencies.R')
+```
+
+## Load Data  
+
+```{r}
+sample_submission <- find_feather('sample_submission')
+train <- find_feather('train')
+members <- find_feather('members')
+```
+
+
+```{r}
+churn_rate <- sum(train$is_churn)/nrow(train)
+
+uniform_guess <- sample_submission %>%
+  mutate(is_churn = churn_rate)
+
+uniform_guess %>% 
+  write_csv(paste0(data_dir(),'uniform_guess.csv'))
+```
+
+
